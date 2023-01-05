@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from demo.ninjateam.org/html/my-admin/light/page-starter.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jan 2018 03:48:56 GMT -->
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Pengenalan Wajah - Halaman Utama</title>
+
+	<!-- Main Styles -->
+	<link rel="stylesheet" href="assets/styles/style.min.css">
+
+	<!-- Material Design Icon -->
+	<link rel="stylesheet" href="assets/fonts/material-design/css/materialdesignicons.css">
+
+	<!-- mCustomScrollbar -->
+	<link rel="stylesheet" href="assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css">
+
+	<!-- Waves Effect -->
+	<link rel="stylesheet" href="assets/plugin/waves/waves.min.css">
+
+	<!-- Sweet Alert -->
+	<link rel="stylesheet" href="assets/plugin/sweet-alert/sweetalert.css">
+
+	<style>
+		table {
+			border: 1px;
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 86%;
+			margin: auto;
+		}
+
+		td,
+		th {
+			border: 1px solid black !important;
+			padding: 5px;
+		}
+
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="main-menu">
+		<header class="header">
+			<a href="{{url_for('home')}}" class="logo"><i class="ico mdi mdi-account-box"></i>Face Reg</a>
+			<button type="button" class="button-close fa fa-times js__menu_close"></button>
+			<div class="user">
+				<a href="#" class="avatar"><img src="assets/images/avatar-sm-5.jpg" alt=""><span
+						class="status online"></span></a>
+				<h5 class="name"><a href="{{url_for('home')}}">Administratif</a></h5>
+				<h5 class="position">Administrator</h5>
+				<!-- /.name -->
+				<!-- /.control-wrap -->
+			</div>
+			<!-- /.user -->
+		</header>
+		<!-- /.header -->
+		<div class="content">
+
+			<div class="navigation">
+				<h5 class="title">Navigation</h5>
+				<!-- /.title -->
+				<ul class="menu js__accordion">
+					<li>
+						<a class="waves-effect ac" href="{{url_for('home')}}"><i
+								class="menu-icon mdi mdi-account-box"></i><span>Pengenalan Wajah</span></a>
+					</li>
+					<li class="current">
+						<a class="waves-effect ac" href="{{url_for('daftar')}}"><i
+								class="menu-icon mdi mdi-account-card-details"></i><span>Pendaftaran Wajah</span></a>
+					</li>
+				</ul>
+
+			</div>
+			<!-- /.navigation -->
+		</div>
+		<!-- /.content -->
+	</div>
+	<!-- /.main-menu -->
+
+	<div class="fixed-navbar">
+		<div class="pull-left">
+			<button type="button" class="menu-mobile-button glyphicon glyphicon-menu-hamburger js__menu_mobile"></button>
+			<h1 class="page-title">Halaman Pengenalan Wajah</h1>
+			<!-- /.page-title -->
+		</div>
+		<!-- /.pull-left -->
+		<div class="pull-right">
+
+		</div>
+		<!-- /.pull-right -->
+	</div>
+	<!-- /.fixed-navbar -->
+
+
+
+
+	<!-- /#message-popup -->
+	<div id="wrapper">
+		<div class="main-content">
+			<div class="row small-spacing">
+				<div class="col-xs-2 col-md-2"></div>
+				<div class="col-xs-8 col-md-8">
+					<div class="box-content card">
+						<h4 class="box-title">Form Pendaftaran Wajah</h4>
+						<form action='/add' method="POST" enctype="multipart/form-data" class="card-content">
+							<div class="form-group">
+								<label for="input-file-now">Masukkan Nama</label>
+								<input type="text" name="newusername" id="newusername" class="form-control" placeholder="Masukkan Nama" required>
+							</div>
+							<div class="form-group text-center">
+								<button type="submit" class="btn btn-primary btn-sm waves-effect waves-light" id="btn_daftar">
+									Scan Foto Wajah
+								</button>
+							</div>
+
+						</form>
+					</div>
+				</div>
+				<div class="col-xs-2 col-md-2"></div>
+
+
+
+			</div>
+
+			<div class="row small-spacing">
+				<div class="col-xs-2 col-md-2"></div>
+				<div class="col-xs-8 col-md-8">
+					<div class="box-content card">
+						<h4 class="box-title">List User : {{allWajah|length}}</h4>
+						<div class="card-content">
+							<table style="background-color: white;">
+								<tr>
+									<td><b>No</b></td>
+									<td><b>Name</b></td>
+									
+								</tr>
+								{%if allWajah %}
+								{% for i in range(0, allWajah|length) %}
+								<tr>
+									<td>{{i+1}}</td>
+									<td>{{allWajah[i]}}</td>
+								
+								</tr>
+								{% endfor %}
+								{% endif %}
+									
+							</table>
+
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-2 col-md-2"></div>
+
+
+
+			</div>
+
+
+			<footer class="footer">
+				<ul class="list-inline">
+					<li>2022 © Emil.</li>
+					<li><a href="#">Website</a></li>
+					<li><a href="#">Facebook</a></li>
+					<!-- <li><a href="#">Help</a></li> -->
+				</ul>
+			</footer>
+		</div>
+		<!-- /.main-content -->
+	</div><!--/#wrapper -->
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="assets/script/html5shiv.min.js"></script>
+		<script src="assets/script/respond.min.js"></script>
+	<![endif]-->
+	<!-- 
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="assets/scripts/jquery.min.js"></script>
+	<script src="assets/scripts/modernizr.min.js"></script>
+	<script src="assets/plugin/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="assets/plugin/nprogress/nprogress.js"></script>
+	<script src="assets/plugin/sweet-alert/sweetalert.min.js"></script>
+	<script src="assets/plugin/waves/waves.min.js"></script>
+
+
+
+	<script src="assets/scripts/main.min.js"></script>
+
+</body>
+
+<!-- Mirrored from demo.ninjateam.org/html/my-admin/light/page-starter.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jan 2018 03:48:56 GMT -->
+
+</html>
